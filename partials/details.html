@@ -1,0 +1,46 @@
+  <div class="main-content" style="padding-left:270px;" ng-controller="CBInvDetailsCtrl">
+     
+          <ul class="unstyled pull-right title-summary"  ng-model="detailSummary">
+              <li><b>Issues:</b> {{ detailSummary.totalIssues}}</li>
+              <li><b>Spendings:</b> {{ detailSummary.totalPrice }}</li>
+              <li><b>Value:</b> {{ detailSummary.totalValue }}</li>
+          </ul>
+     
+      <h4 >{{ selectedPublisher }} : {{ selectedTitle }}</h4>
+<!--      <div class="gridStyle" ng-grid="gridOptions" ng-show="hasDetailedListing"></div>-->
+<!--            <b >Number of Issues: </b><span > {{ newTitlesTotal() }}</span>-->
+            <div ng-show="!hasDetailedListing">
+                No issues available.
+            </div>
+            <table class="table table-bordered table-striped" ng-show="hasDetailedListing">
+                <thead>
+                    <tr>
+                        <th>Issue</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Condition</th>
+                        <th>Value</th>
+                        <th>Box</th>
+                        <th>Notes</th>
+                        <th>Date</th>
+                        <th style="width:100px"></th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat = "b in selectedBook" >
+                    <tr>
+                        <td>{{ b.Issue  }}</td>
+                         <td>{{ b.Price }}</td>
+                          <td>{{ b.Qty }}</td>
+                           <td>{{ b.Condition }}</td>
+                            <td>{{ b.Value }}</td>
+                             <td>{{ b.Box }}</td>
+                              <td>{{ b.Notes }}</td>
+                              <td>{{ b.DateYear }}</td>
+                        <td>
+                            <button class="btn" ><i class="icon-edit"></i></button>
+                            <button class="btn" ><i class="icon-trash"></i></button>
+                        </td>
+                    </tr>
+              </tbody>
+            </table>
+ </div><!-- end main-content -->

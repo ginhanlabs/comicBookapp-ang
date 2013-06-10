@@ -1,0 +1,181 @@
+ 
+  <div class="main-content" >
+               
+                <div class="widgets-section  pull-right" >
+<!--                    <div class="selectedItems  " style="margin:auto;border:1px solid red;"> {{newComicList}}</div>-->
+                    <div>
+                        <h4>Add New Comics</h4>
+                    </div>
+                   <br/>
+                   
+                        <form name="AddComicForm"   novalidate class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label" for="txtMMYY" >Date:</label>
+                                <div class="controls">
+                                     <input type="month" id="txtMMYY" ng-model="newTitle.mmyy" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="optPublisher" >Publisher:</label>
+                                <div class="controls">
+                                    <select ng-options="p.publisherName for p in publishers" ng-model="selectedPub" ng-change="setPublisher(selectedPub)">
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtTitle" >Title:</label>
+                                    <div class="controls">
+                                      
+                                        <select ng-options="t.title for t in titles " ng-model="selectedTitle " ng-change="setTitle(selectedTitle)">
+
+                                    </select>
+<!--                                         {{ pName }} <div  titles-bypub  pattr="{{pubName}}" ></div>-->
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtIssue" >Issue</label>
+                                <div class="controls">
+                                    <input type="number" id="txtIssue" ng-model="newTitle.issue" />
+
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtQty" >Qty:</label>
+                                <div class="controls">
+                                    <input type="number" id="txtQty" name="txtQty" placeholder="1" ng-model="newTitle.qty"  min="0" max="20" required integer />
+
+                                </div>
+                                <div  ng-show="form.txtQty.$dirty && form.txtQty.$invalid">
+                                          <span ng-show="form.txtQty.$error.required">Enter a range between 0 - 20</span>
+                                            </div><br>
+<!--                                                   <tt>userType = {{newTitle.qty}}</tt><br>
+                               <tt>form.txtQty.$valid = {{form.txtQty.$valid}}</tt><br>
+                               <tt>form.txtQty.$error = {{form.txtQty.$error}}</tt><br>
+                               <tt>form..txtQty.$valid = {{form.txtQty.$valid}}</tt><br>
+                               <tt>form.$error.required = {{!!form.$error.required}}</tt><br>-->
+
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtPrice" >Price:</label>
+                                <div class="controls">
+                                    <input type="number" id="txtPrice" placeholder="3.99"  ng-model="newTitle.price" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="optCondition" >Condition:</label>
+                                <div class="controls">
+                                    <select id="optCondition" ng-model="selectedCondition" ng-change="setCondition(selectedCondition)">
+                                        <option value="-">--</option>
+                                        <option value="Mint">Mint</option>
+                                        <option value="Fine">Fine</option>
+                                        <option value="Good">Good</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtValue" >Value:</label>
+                                <div class="controls">
+                                    <input type="number" id="txtValue" placeholder="3.99" value="3.99" ng-model="newTitle.value"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtBoxNum" >Box:</label>
+                                <div class="controls">
+                                    <input type="text" id="txtBoxNum"  placeholder="Box #" ng-model="newTitle.box"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtNotes" >Notes</label>
+                                <div class="controls">
+                                    <input type="text" id="txtNotes" ng-model="newTitle.notes" />
+                                </div>
+                            </div>
+                            <div class="add-comic-section">
+                                <!--ng-disabled="form.$invalid || isUnchanged(newTitle)"-->
+                                <button type="button" class="btn btn-primary" ng-click="BtnNewAddComics(newTitle)" >Add</button>
+                                <button type="button" class="btn btn-primary" ng-click="reset()" ng-disabled="isUnchanged(newTitle)">Reset</button>
+
+                            </div>
+                        </form> <!-- end form -->
+                    </div><!-- floatright -->
+
+                    <div class="widgets-section span8"  >
+                        <div class="widgets-section  pull-left">
+                            <h4>Collection</h4>
+                            <table>
+                                <tr>
+                                    <td class="titles">Marvel</td><td>$200</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">DC</td><td>$100</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Image</td><td>$50</td>
+                                </tr>
+                                <tr>
+                                    <td></td><td>$350</td>
+                                </tr>
+                            </table>
+                        </div>
+                     <div class="widgets-section pull-left">
+                            <h4>Most Collected</h4>
+                            <table>
+                                <tr>
+                                    <td class="titles">Amazing Spider-man</td><td>100</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Batman</td><td>25</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Teen Titans</td><td>15</td>
+                                </tr>
+
+                            </table>
+                        </div> 
+                    <div class="widgets-section pull-left">
+                            <h4>Most Valuable</h4>
+                            <table>
+                                <tr>
+                                    <td>#252</td><td class="titles">Amazing Spider-man</td><td>$22</td>
+                                </tr>
+                                <tr>
+                                    <td>#1</td><td class="titles">Batman</td><td>$5</td>
+                                </tr>
+                                <tr>
+                                    <td>#1</td><td class="titles">A-team</td><td>$4</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div><!-- end widgets section -->
+                    
+                    <div class="chart-container span8">
+                         <chart ng-model='data' class="pull-left"> </chart>
+                    </div>
+                 
+                  <div class="widgets-section span8 " >
+                     <div class="gridStyle" ng-grid="newComicsGrid"> </div>
+                  </div>
+<!--                     <table class="table "  ng-show="hasDetailedListing">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th style="width:10px;">Issue</th>
+                                    <th style="width:40px"></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat = "item in newComicList" ng-model="newComicList">
+                                <tr>
+                                    <td class="titles">{{ item.title }}</td>
+                                    <td class="issues">{{ item.issue }}</td>
+                                    <td>
+                                        <button class="btn" ng-click="RemoveComicItem($index);"><i class="icon-remove"></i></button>
+                                    </td>
+                                </tr>
+                          </tbody>
+                        </table>-->
+                    <div style="clear:both" >  </div>
+
+       </div><!-- end main-content -->        
+          
