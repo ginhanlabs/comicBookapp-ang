@@ -55,12 +55,11 @@ angular.module('cbInv.controllers', []).
     $scope.newComicList = [];
     
     var idx = 0;
-    
+   
 
     $scope.setPublisher = function(_pub) {
         $scope.pubName = _pub.publisherName;
-     //   $scope.pName = $scope.pubName;
-
+        $scope.titles = _.where(TitlesList, {"publisherId": $scope.selectedPub.publisherId});
     };
 
     $scope.setTitle = function(_title) {
@@ -99,7 +98,7 @@ angular.module('cbInv.controllers', []).
 //        $scope.update = function(user) {
 //          $scope.master= angular.copy(newTitle);
 //        };
-
+    
     $scope.reset = function() {
         /* clears from memory (scope) and then clear it from model */
       $scope.newTitle = angular.copy($scope.master);

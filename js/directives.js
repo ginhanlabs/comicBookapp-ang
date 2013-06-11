@@ -6,7 +6,7 @@
     angular.module('cbInv.directives', []).
         directive('chart', function(){
             return{
-                restrict: 'E',
+                restrict: 'A',
                 link: function(scope, elem, attrs){
                     var chart = null,
                         opts  = { };
@@ -25,40 +25,20 @@
                     });
                 }
             };
-        });
+//            .
 //        directive('titlesBypub', function(){
+//           // var sel = '<select></select>';
 //            return {
-//                restrict: 'A',
-//////               template: '<select ><option>--</option></select>',
-////                  template: '<div ng-show=>dd</div>',
-//                    template: '<select >' + // ng-model="selectedTitle" ng-change="setTitle(selectedTitle)"
-//                             '<li ng-repeat="t in titlesm ">' + //ng-repeat="t in title"
-//                            '{{ t.title }}</li>' +
-//                          '</select>',
-////                   template: '<select ng-options="t.title for t in titles " ng-model="selectedTitle " ng-change="setTitle(selectedTitle)"></select>',
-//                scope: {
-//                   pattr:'='
-//                },
-//                link: function (scope, element, attributes){
-//                    var popTitles = function() {
-//                     scope.titlesm = [{"title": "a"},{"title": "b"}];
-//                     return;
-//                   
-//                    };
-//                    
-//                    scope.$watch('pattr', function(oldVal, newVal) {
-////                        if (newVal === undefined){
-////                            newVal = '333';
-////                        }
-//                        console.log(scope.pattr + "  " + oldVal + " " + newVal);
-//                    if (newVal) {
-//                        
-//                      popTitles();
-//                    }
-//                  });
-//                }
+//                   restrict: 'A',
+//                   template: '<select ng-options="t.title for t in titles " ng-model="selectedTitle"></select>',
+//            link: function(scope, iElement, iAttrs){
+//               var pList = scope.publishers;
+//               var pubSelected = scope.selectedPub;
+//               // angular.element(iElement).html('');
+//            }
 //            };
-//        });    
+//        });
+        })    
 
             
 //    directive('fundooRating', function () {

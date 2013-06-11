@@ -9,7 +9,7 @@
 //    $routeProvider.otherwise({redirectTo: '/view1'});,'ngGrid'
 //  }]);
 //,'cbInv.filters', 'cbInv.directives'
-var cbInv = angular.module('cbInv', ['cbInv.controllers','ui.bootstrap','ngGrid']).
+var cbInv = angular.module('cbInv', ['cbInv.controllers','cbInv.directives','ui.bootstrap','ngGrid', 'cbInv.filters']).
          config (['$routeProvider', function($routeProvider){
             $routeProvider.
                     when('/', {templateUrl: 'partials/home.html', controller: 'CBInvHomeCtrl' }).

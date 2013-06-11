@@ -23,14 +23,15 @@
 
                                 </div>
                             </div>
+                          
                             <div class="control-group">
                                 <label class="control-label" for="txtTitle" >Title:</label>
                                     <div class="controls">
-                                      
-                                        <select ng-options="t.title for t in titles " ng-model="selectedTitle " ng-change="setTitle(selectedTitle)">
+<!--                                   adding this did not work     |  {filter : -->
+                                        <select ng-options="t.title for t in titles" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)">
 
                                     </select>
-<!--                                         {{ pName }} <div  titles-bypub  pattr="{{pubName}}" ></div>-->
+
                                 </div>
                             </div>
                             <div class="control-group">
