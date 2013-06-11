@@ -6,7 +6,7 @@
     angular.module('cbInv.directives', []).
         directive('chart', function(){
             return{
-                restrict: 'A',
+                restrict: 'E',
                 link: function(scope, elem, attrs){
                     var chart = null,
                         opts  = { };
@@ -38,7 +38,7 @@
 //            }
 //            };
 //        });
-        })    
+        });    
 
             
 //    directive('fundooRating', function () {
