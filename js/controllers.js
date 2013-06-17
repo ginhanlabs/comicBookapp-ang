@@ -53,17 +53,20 @@ angular.module('cbInv.controllers', []).
     $scope.titles = TitlesList;
     $scope.master= {};
     $scope.newComicList = [];
-    
+    $scope.isFormValid = false;
+    $scope.myVal = 33;
     var idx = 0;
    
 
     $scope.setPublisher = function(_pub) {
         $scope.pubName = _pub.publisherName;
         $scope.titles = _.where(TitlesList, {"publisherId": $scope.selectedPub.publisherId});
+    
     };
 
     $scope.setTitle = function(_title) {
         $scope.title = _title.title;
+       
     };
 
     $scope.setCondition = function(_condition) {
@@ -103,7 +106,7 @@ angular.module('cbInv.controllers', []).
         /* clears from memory (scope) and then clear it from model */
       $scope.newTitle = angular.copy($scope.master);
       $scope.condition = {};
-      $scope.selectedCondition = 0;
+      $scope.selectedCondition = 1;
       
       $scope.pubName ={};
       $scope.selectedPub = 0;
@@ -112,23 +115,25 @@ angular.module('cbInv.controllers', []).
       $scope.selectedTitle = 0;
     };
 
-        $scope.isUnchanged = function(item) {
-          return angular.equals(item, $scope.master);
-        };
+    $scope.isUnchanged = function(item) {
+      return angular.equals(item, $scope.master);
+    };
+    
     $scope.reset();
 
     $scope.BtnNewAddComics = function() {
         var qty;
         var price;
         var newTitle = $scope.newTitle;
+        var defaultCondition = "Good";
 
-        if (newTitle.qty == "") {
+        if ( newTitle.qty === undefined) {
             qty = 1;
         }
         else
             qty = newTitle.qty;
 
-        if (newTitle.price == "") {
+        if (newTitle.price === undefined) {
             price = "3.99";
         }
         else
@@ -216,14 +221,13 @@ angular.module('cbInv.controllers', []).
                                 <button class="btn"  ng-click="RemoveNewComic(row)" ><i class="icon-remove"></i></button>\n\
                             </div>'},
        {field: 'Issue', displayName: 'Issue', width:'50px'},
-       {field: 'Title', displayName: 'Title', width:'250px'},
+       {field: 'Title', displayName: 'Title', width:'400px'},
        {field: 'Qty', displayName: 'Qty', width:'50px'},
        {field: 'Price', displayName: 'Price', width:'50px'},
        {field: 'Condition', displayName: 'Condition', width:'90px'},
        {field: 'Value', displayName: 'Value', width:'50px'},
-       {field: 'Box', displayName: 'Box', width:'40px'},
-       {field: 'MMYY', displayName: 'Date', width:'90px'},
-       {field: 'Notes', displayName: 'Notes', width:'30%'}
+       {field: 'Box', displayName: 'Box', width:'40px'}
+      
       ],
        showFilter: true,
 //            showColumnMenu: true,

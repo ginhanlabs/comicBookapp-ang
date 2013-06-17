@@ -25,7 +25,46 @@
                     });
                 }
             };
-//            .
+        }).
+          directive('txtIss', function(){
+          return {
+                restrict: "C",
+                scope: {
+                    
+                },
+                link: function($scope, element, attributes){
+                  // var b = $scope.isFormValid;
+                   element.bind("keyup", function(){
+                      
+                     //  alert($(element).val());
+                       if (element.val() !== "" ){
+                      // $scope.myVal = $(element).val();
+//                        scope.$watch(element, function(v){
+//                             if (element.val() !== "" ){
+//                                 ;
+//                            }
+//                        });
+//                       $scope.isFormValid = false;
+                          $scope.myVal = "ddd";
+                       }
+//                      if ($(element).text !== "") {
+//                                $scope.isFormValid = false;
+//                            }
+//                            else
+//                                {
+//                                    $scope.isFormValid = true;
+//                                }
+                       
+                        
+                   });
+                  //  
+//                         
+//                   
+
+                }
+            };
+          });
+////            .
 //        directive('titlesBypub', function(){
 //           // var sel = '<select></select>';
 //            return {
@@ -38,7 +77,7 @@
 //            }
 //            };
 //        });
-        });    
+   //     });    
 
             
 //    directive('fundooRating', function () {

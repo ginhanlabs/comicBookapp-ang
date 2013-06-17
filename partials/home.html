@@ -8,17 +8,17 @@
                     </div>
                    <br/>
                    
-                        <form name="AddComicForm"   novalidate class="form-horizontal">
+                        <form name="AddComicForm"   novalidate class="form-horizontal" ><!-- ng-init="isFormValid = true" moved to $scope -->
                             <div class="control-group">
                                 <label class="control-label" for="txtMMYY" >Date:</label>
                                 <div class="controls">
-                                     <input type="month" id="txtMMYY" ng-model="newTitle.mmyy" />
+                                     <input type="month" id="txtMMYY" name="txtMMYY" ng-model="newTitle.mmyy" ng-required="true"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="optPublisher" >Publisher:</label>
                                 <div class="controls">
-                                    <select ng-options="p.publisherName for p in publishers" ng-model="selectedPub" ng-change="setPublisher(selectedPub)">
+                                    <select ng-options="p.publisherName for p in publishers" ng-model="selectedPub" id="optPublisher" name="optPublisher" ng-change="setPublisher(selectedPub)" ng-required="true">
                                     </select>
 
                                 </div>
@@ -28,34 +28,31 @@
                                 <label class="control-label" for="txtTitle" >Title:</label>
                                     <div class="controls">
 <!--                                   adding this did not work     |  {filter : -->
-                                        <select ng-options="t.title for t in titles" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)">
-
-                                    </select>
-
-                                </div>
+                                        <select ng-options="t.title for t in titles" name="txtTitle" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)" ng-required="true">
+                                        </select>
+                                    </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="txtIssue" >Issue</label>
                                 <div class="controls">
-                                    <input type="number" id="txtIssue" ng-model="newTitle.issue" />
+<!--                                      -->
+                                    <input type="number" id="txtIssue" name="txtIssue" ng-model="newTitle.issue"  required="true" />
+                                    <!--<div  ng-show="AddComicForm.txtIssue.$dirty && !AddComicForm.txtIssue.$valid">-->
+                                          <!--&lt;!&ndash;Enter a range between 0 - 999&ndash;&gt;-->
+                                            <!--</div>-->
 
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="txtQty" >Qty:</label>
                                 <div class="controls">
-                                    <input type="number" id="txtQty" name="txtQty" placeholder="1" ng-model="newTitle.qty"  min="0" max="20" required integer />
+                                    <input type="number" id="txtQty" name="txtQty"  ng-model="newTitle.qty"  ng-required="true"/>
+                                     <!--<div  ng-show="AddComicForm.txtQty.$dirty && !AddComicForm.txtQty.$valid">-->
+                                        <!--&lt;!&ndash;&lt;!&ndash;Enter a range between 0 - 999&ndash;&gt;&ndash;&gt;-->
+                                    <!--</div>-->
 
                                 </div>
-                                <div  ng-show="form.txtQty.$dirty && form.txtQty.$invalid">
-                                          <span ng-show="form.txtQty.$error.required">Enter a range between 0 - 20</span>
-                                            </div><br>
-<!--                                                   <tt>userType = {{newTitle.qty}}</tt><br>
-                               <tt>form.txtQty.$valid = {{form.txtQty.$valid}}</tt><br>
-                               <tt>form.txtQty.$error = {{form.txtQty.$error}}</tt><br>
-                               <tt>form..txtQty.$valid = {{form.txtQty.$valid}}</tt><br>
-                               <tt>form.$error.required = {{!!form.$error.required}}</tt><br>-->
-
+                               
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="txtPrice" >Price:</label>
@@ -94,7 +91,9 @@
                             </div>
                             <div class="add-comic-section">
                                 <!--ng-disabled="form.$invalid || isUnchanged(newTitle)"-->
-                                <button type="button" class="btn btn-primary" ng-click="BtnNewAddComics(newTitle)" >Add</button>
+                                <button type="button"  class="btn btn-primary" ng-click="BtnNewAddComics(newTitle)"
+                                        ng-disabled="!AddComicForm.txtIssue.$valid || !AddComicForm.txtQty.$valid || !AddComicForm.txtMMYY.$valid
+                                        || !AddComicForm.optPublisher.$valid ">Add</button>
                                 <button type="button" class="btn btn-primary" ng-click="reset()" ng-disabled="isUnchanged(newTitle)">Reset</button>
 
                             </div>
