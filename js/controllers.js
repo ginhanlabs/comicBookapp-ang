@@ -18,25 +18,25 @@ var PublisherList = [
 var TitlesList = [
     {"id": 1, "titleId": 1, "publisherId": 1, "title": "Amazing Spider-man and friends",
         "Issues":[
-             {"Issue": 1, "Price": 1.99, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 2, "Price": 2.22, "Qty": 1, "Condition": "Good", "Value": .75, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 3, "Price": 3.33, "Qty": 1, "Condition": "Good", "Value": 3.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 4, "Price": 4.44, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 5, "Price": 5.55, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 6, "Price": 6.66, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 10, "Price": 7.77, "Qty": 1, "Condition": "Fine", "Value": .75, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 12, "Price": 8.88, "Qty": 1, "Condition": "Good", "Value": 1.00, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 16, "Price": 9.99, "Qty": 2, "Condition": "Fine", "Value": 2.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-              {"Issue": 14, "Price": 10.11, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 15, "Price": 11.22, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-             {"Issue": 22, "Price": 12.33, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-              {"Issue": 34, "Price": 13.49, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-               {"Issue": 15, "Price": 14.59, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "MMYY": "01/2013" },
-            {"Issue": 106, "Price":15.69, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "MMYY": "01/2013" }
+             {"Issue": 1, "Price": 1.99, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 2, "Price": 2.22, "Qty": 1, "Condition": "Good", "Value": .75, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 3, "Price": 3.33, "Qty": 1, "Condition": "Good", "Value": 3.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 4, "Price": 4.44, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 5, "Price": 5.55, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 6, "Price": 6.66, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 10, "Price": 7.77, "Qty": 1, "Condition": "Fine", "Value": .75, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 12, "Price": 8.88, "Qty": 1, "Condition": "Good", "Value": 1.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 16, "Price": 9.99, "Qty": 2, "Condition": "Fine", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+              {"Issue": 14, "Price": 10.11, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 15, "Price": 11.22, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+             {"Issue": 22, "Price": 12.33, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+              {"Issue": 34, "Price": 13.49, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+               {"Issue": 15, "Price": 14.59, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
+            {"Issue": 106, "Price":15.69, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" }
          ]},
     {"id": 2, "titleId": 2, "publisherId": 1, "title": "Mighty Thor",
          "Issues":[
-             {"Issue": 1, "Price": 2.99, "Qty": 1, "Condition": "Poor", "Value": 500, "Box": 11, "Notes": "" , "MMYY": "01/2013"}
+             {"Issue": 1, "Price": 2.99, "Qty": 1, "Condition": "Poor", "Value": 500, "Box": 11, "Notes": "" , "YYYYMM": "2013-01"}
          ]},
     {"id": 3, "titleId": 3, "publisherId": 2, "title": "Batman"},
     {"id": 4, "titleId": 4, "publisherId": 3, "title": "Savage Dragon"},
@@ -55,18 +55,24 @@ angular.module('cbInv.controllers', []).
     $scope.newComicList = [];
     $scope.isFormValid = false;
     $scope.myVal = 33;
+    $scope.pubName    ="";
     var idx = 0;
-   
+
 
     $scope.setPublisher = function(_pub) {
         $scope.pubName = _pub.publisherName;
         $scope.titles = _.where(TitlesList, {"publisherId": $scope.selectedPub.publisherId});
-    
+
     };
+
+        /* now calling via directive
+        $scope.setPublisher = function(_pub) {
+            $scope.pubName = _pub.publisherName;
+            $scope.titles = _.where(TitlesList, {"publisherId": parseInt(_pub.publisherId)});
+        };       */
 
     $scope.setTitle = function(_title) {
         $scope.title = _title.title;
-       
     };
 
     $scope.setCondition = function(_condition) {
@@ -82,28 +88,24 @@ angular.module('cbInv.controllers', []).
         }
         return ("$" + _total + " on " + _qty + " titles.");
     };
-    
-    $scope.open = function() {
-        $scope.shouldBeOpen = true;
-    };
-
-    $scope.close = function() {
-        $scope.reset();
-        $scope.closeMsg = 'I was closed at: ' + new Date();
-        $scope.shouldBeOpen = false;
-    };
-
-    $scope.opts = {
-        backdropFade: true,
-        dialogFade: true
-    };
-     
-//        $scope.update = function(user) {
-//          $scope.master= angular.copy(newTitle);
-//        };
+//    from modal...
+//    $scope.open = function() {
+//        $scope.shouldBeOpen = true;
+//    };
+//
+//    $scope.close = function() {
+//        $scope.reset();
+//        $scope.closeMsg = 'I was closed at: ' + new Date();
+//        $scope.shouldBeOpen = false;
+//    };
+//
+//    $scope.opts = {
+//        backdropFade: true,
+//        dialogFade: true
+//    };
     
     $scope.reset = function() {
-        /* clears from memory (scope) and then clear it from model */
+        /* clears from scope and then clear it from model */
       $scope.newTitle = angular.copy($scope.master);
       $scope.condition = {};
       $scope.selectedCondition = 1;
@@ -126,6 +128,8 @@ angular.module('cbInv.controllers', []).
         var price;
         var newTitle = $scope.newTitle;
         var defaultCondition = "Good";
+        var yearMonth = "";
+       
 
         if ( newTitle.qty === undefined) {
             qty = 1;
@@ -139,6 +143,15 @@ angular.module('cbInv.controllers', []).
         else
             price = newTitle.price;
 
+        if (newTitle.mmyy === undefined) {
+             var year = new Date().getFullYear();
+             var month = new Date().getMonth();
+             yearMonth = year + "-" + month;
+        }
+        else
+            {
+                yearMonth = newTitle.yyyymm;
+            }
         $scope.newComicList.push({
             "idx": idx++,
             "Publisher": $scope.pubName,
@@ -150,9 +163,13 @@ angular.module('cbInv.controllers', []).
             "Value": newTitle.value,
             "Box": newTitle.box,
             "Notes": newTitle.notes,
-            "MMYY" : newTitle.mmyy
+            "MMYY" : yearMonth
         });
-         
+        
+       $scope.AddComicForm.optPublisher.$setPristine();
+       $scope.AddComicForm.txtTitle.$setPristine();
+       $scope.AddComicForm.txtIssue.$setPristine();
+       
          $scope.reset();
     }; // end addBtn
    

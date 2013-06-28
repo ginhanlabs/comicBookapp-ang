@@ -9,34 +9,33 @@
                    <br/>
                    
                         <form name="AddComicForm"   novalidate class="form-horizontal" ><!-- ng-init="isFormValid = true" moved to $scope -->
+                           
                             <div class="control-group">
-                                <label class="control-label" for="txtMMYY" >Date:</label>
+                                <label class="control-label" for="optPublisher" >Publisher: <em>*</em></label>
                                 <div class="controls">
-                                     <input type="month" id="txtMMYY" name="txtMMYY" ng-model="newTitle.mmyy" ng-required="true"/>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label" for="optPublisher" >Publisher:</label>
-                                <div class="controls">
-                                    <select ng-options="p.publisherName for p in publishers" ng-model="selectedPub" id="optPublisher" name="optPublisher" ng-change="setPublisher(selectedPub)" ng-required="true">
+                                    <select  ng-options="p.publisherName for p in publishers" ng-model="selectedPub" id="optPublisher" name="optPublisher" ng-change="setPublisher(selectedPub)" required >
                                     </select>
-
+                                    <!--<div  class="select-pub-ctrl"  ></div>-->
+<!--                                    <div ng-show="AddComicForm.optPublisher.$error.required">-->
+<!--                                        <div ng-show="!AddComicForm.optPublisher.$dirty">dd</div>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
-                          
+
                             <div class="control-group">
-                                <label class="control-label" for="txtTitle" >Title:</label>
+                                <label class="control-label" for="txtTitle" >Title: <em>*</em></label>
                                     <div class="controls">
 <!--                                   adding this did not work     |  {filter : -->
                                         <select ng-options="t.title for t in titles" name="txtTitle" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)" ng-required="true">
                                         </select>
                                     </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label" for="txtIssue" >Issue</label>
+                            <div class="control-group ">
+                                <label class="control-label" for="txtIssue" >Issue: <em>*</em></label>
                                 <div class="controls">
 <!--                                      -->
                                     <input type="number" id="txtIssue" name="txtIssue" ng-model="newTitle.issue"  required="true" />
+
                                     <!--<div  ng-show="AddComicForm.txtIssue.$dirty && !AddComicForm.txtIssue.$valid">-->
                                           <!--&lt;!&ndash;Enter a range between 0 - 999&ndash;&gt;-->
                                             <!--</div>-->
@@ -44,20 +43,16 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="txtQty" >Qty:</label>
+                                <label class="control-label" for="txtQty" >Qty: </label>
                                 <div class="controls">
-                                    <input type="number" id="txtQty" name="txtQty"  ng-model="newTitle.qty"  ng-required="true"/>
-                                     <!--<div  ng-show="AddComicForm.txtQty.$dirty && !AddComicForm.txtQty.$valid">-->
-                                        <!--&lt;!&ndash;&lt;!&ndash;Enter a range between 0 - 999&ndash;&gt;&ndash;&gt;-->
-                                    <!--</div>-->
-
+                                    <input type="number" id="txtQty" name="txtQty"  ng-model="newTitle.qty" placeholder="1"/>
                                 </div>
                                
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="txtPrice" >Price:</label>
+                                <label class="control-label" for="txtPrice" >Price: </label>
                                 <div class="controls">
-                                    <input type="number" id="txtPrice" placeholder="3.99"  ng-model="newTitle.price" />
+                                    <input type="number" id="txtPrice" name="txtPrice" placeholder="3.99"  ng-model="newTitle.price" />
                                 </div>
                             </div>
                             <div class="control-group">
@@ -68,6 +63,7 @@
                                         <option value="Mint">Mint</option>
                                         <option value="Fine">Fine</option>
                                         <option value="Good">Good</option>
+                                        <option value="Poor">Poor</option>
                                     </select>
                                 </div>
                             </div>
@@ -88,12 +84,16 @@
                                 <div class="controls">
                                     <input type="text" id="txtNotes" ng-model="newTitle.notes" />
                                 </div>
+                            </div> <div class="control-group">
+                                <label class="control-label" for="txtYYYYMM" >Date:</label>
+                                <div class="controls">
+                                     <input type="month" id="txtYYYYMM" name="txtYYYYMM" ng-model="newTitle.yyyymm" />
+                                </div>
                             </div>
                             <div class="add-comic-section">
-                                <!--ng-disabled="form.$invalid || isUnchanged(newTitle)"-->
+                                
                                 <button type="button"  class="btn btn-primary" ng-click="BtnNewAddComics(newTitle)"
-                                        ng-disabled="!AddComicForm.txtIssue.$valid || !AddComicForm.txtQty.$valid || !AddComicForm.txtMMYY.$valid
-                                        || !AddComicForm.optPublisher.$valid ">Add</button>
+                                        ng-disabled="!(AddComicForm.optPublisher.$dirty && AddComicForm.txtTitle.$dirty && (AddComicForm.txtIssue.$dirty && AddComicForm.txtIssue.$valid))" >Add</button>
                                 <button type="button" class="btn btn-primary" ng-click="reset()" ng-disabled="isUnchanged(newTitle)">Reset</button>
 
                             </div>

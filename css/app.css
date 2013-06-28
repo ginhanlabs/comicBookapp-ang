@@ -8,6 +8,7 @@ h4 { background-color:#808080; padding:6px; color:#fff;}
     padding:0px 0px 10px 40px;
 }
 
+em {font-size: 1.3em; color:red;}
 .main-content {padding-left:220px;}
 .widgets-section {width:30%;margin-left:20px;}
 .widgets-section table {width:100%;margin-bottom:10px;}
@@ -21,9 +22,9 @@ h4 { background-color:#808080; padding:6px; color:#fff;}
         background-color: blue;
       }*/
       
- form input.ng-invalid.ng-dirty {
-        background-color: red;
-      }
+ /*form input.ng-invalid.ng-dirty {*/
+        /*background-color: red;*/
+      /*}*/
       
 .title-summary {margin:4px 10px 0px 0px;color:#ffffff;}
 .title-summary li {padding:0px 10px;display:inline;}
@@ -35,31 +36,6 @@ chart{
     left:100px;
    
 }​
-
-/*
-      
- .rating{
-  color: #a9a9a9;
-  margin: 0;
-  padding: 0;
-}
-
-ul.rating {
-  display: inline-block;
-}
-
-.rating li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 1px;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.rating .filled {
-  color: #21568b;
-}*/
 
 .newComicsAddedContainer {margin-top:35px;}
 .gridStyle {

@@ -1,5 +1,7 @@
 comicBookapp-ang
 ================
+updated 06/27
+- form validation is almost there, figured it out lol.
 
 personal learning project using angular, bootstrap, flot and more experimentations tbd
 The goal is to write an app to track comic book collection.
