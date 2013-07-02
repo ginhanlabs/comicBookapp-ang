@@ -1,78 +1,43 @@
 /* todos */
+/* call data via http or service*/
 /* correct way to do select change */
-/* validation on form */
 /* editable row - repopulate form */
 /* save data via form */
 /* chart updating */
 /* search on details */
 /* update Collection section */
 /* update most collected Section */
-/* update most valuable */
-
-var PublisherList = [
-    {"id": 1, "publisherId": 1, "publisherName": "Marvel"},
-    {"id": 2, "publisherId": 2, "publisherName": "DC"},
-    {"id": 3, "publisherId": 3, "publisherName": "Image"}
-];
-
-var TitlesList = [
-    {"id": 1, "titleId": 1, "publisherId": 1, "title": "Amazing Spider-man and friends",
-        "Issues":[
-             {"Issue": 1, "Price": 1.99, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 2, "Price": 2.22, "Qty": 1, "Condition": "Good", "Value": .75, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 3, "Price": 3.33, "Qty": 1, "Condition": "Good", "Value": 3.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 4, "Price": 4.44, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 5, "Price": 5.55, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 6, "Price": 6.66, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 10, "Price": 7.77, "Qty": 1, "Condition": "Fine", "Value": .75, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 12, "Price": 8.88, "Qty": 1, "Condition": "Good", "Value": 1.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 16, "Price": 9.99, "Qty": 2, "Condition": "Fine", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-              {"Issue": 14, "Price": 10.11, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 15, "Price": 11.22, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-             {"Issue": 22, "Price": 12.33, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-              {"Issue": 34, "Price": 13.49, "Qty": 1, "Condition": "Good", "Value": 1.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-               {"Issue": 15, "Price": 14.59, "Qty": 1, "Condition": "Good", "Value": 2.00, "Box": 1, "Notes": "", "YYYYMM": "2013-01" },
-            {"Issue": 106, "Price":15.69, "Qty": 1, "Condition": "Good", "Value": 2.99, "Box": 1, "Notes": "", "YYYYMM": "2013-01" }
-         ]},
-    {"id": 2, "titleId": 2, "publisherId": 1, "title": "Mighty Thor",
-         "Issues":[
-             {"Issue": 1, "Price": 2.99, "Qty": 1, "Condition": "Poor", "Value": 500, "Box": 11, "Notes": "" , "YYYYMM": "2013-01"}
-         ]},
-    {"id": 3, "titleId": 3, "publisherId": 2, "title": "Batman"},
-    {"id": 4, "titleId": 4, "publisherId": 3, "title": "Savage Dragon"},
-    {"id": 5, "titleId": 5, "publisherId": 2, "title": "Teen Titans"},
-    {"id": 6, "titleId": 6, "publisherId": 2, "title": "Blue Beetle"},
-    {"id": 7, "titleId": 7, "publisherId": 1, "title": "Captain America"},
-    {"id": 8, "titleId": 8, "publisherId": 1, "title": "Avengers"},
-    {"id": 9, "titleId": 9, "publisherId": 3, "title": "Spawn"}
-];
+/* update most valuable 
+/*  add new publishers */
+/* add new titles  */
+//
 
 angular.module('cbInv.controllers', []).
-    controller('CBInvHomeCtrl', ['$scope', function($scope) {
-    $scope.publishers = PublisherList;
-    $scope.titles = TitlesList;
+    controller('CBInvHomeCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+    var TitlesList;
     $scope.master= {};
     $scope.newComicList = [];
     $scope.isFormValid = false;
     $scope.myVal = 33;
-    $scope.pubName    ="";
+    $scope.pubName    = "";
+    
     var idx = 0;
-
-
+    
+   $http.get('data/publisherData.json').success(function(cbData){
+         $scope.publishers = cbData.PublisherList;
+         $scope.titles = cbData.TitlesList; // contains all titles
+         $scope.monthlyChartData = cbData.MonthlySpending;
+       
+   });
+  
+    
     $scope.setPublisher = function(_pub) {
         $scope.pubName = _pub.publisherName;
-        $scope.titles = _.where(TitlesList, {"publisherId": $scope.selectedPub.publisherId});
-
+        $scope.optTitles = _.where($scope.titles, {"publisherId": $scope.selectedPub.publisherId});
     };
 
-        /* now calling via directive
-        $scope.setPublisher = function(_pub) {
-            $scope.pubName = _pub.publisherName;
-            $scope.titles = _.where(TitlesList, {"publisherId": parseInt(_pub.publisherId)});
-        };       */
-
     $scope.setTitle = function(_title) {
-        $scope.title = _title.title;
+        $scope.optTitle = _title.title;
     };
 
     $scope.setCondition = function(_condition) {
@@ -106,10 +71,11 @@ angular.module('cbInv.controllers', []).
     
     $scope.reset = function() {
         /* clears from scope and then clear it from model */
-      $scope.newTitle = angular.copy($scope.master);
+      $scope.newBookModel = angular.copy($scope.master);
       $scope.condition = {};
-      $scope.selectedCondition = 1;
+      $scope.selectedCondition = 0;
       
+ 
       $scope.pubName ={};
       $scope.selectedPub = 0;
       
@@ -123,47 +89,63 @@ angular.module('cbInv.controllers', []).
     
     $scope.reset();
 
-    $scope.BtnNewAddComics = function() {
-        var qty;
-        var price;
-        var newTitle = $scope.newTitle;
-        var defaultCondition = "Good";
-        var yearMonth = "";
+    $scope.BtnNewAddComics = function(_newBookModel) {
+        
+        // default values;
+        var  _qty = 1;
+        var  _price = "3.99";
+        var _condition = "";
+        var _yearMonth = "";
+        var _val = "";
+        var _box = "";
+        var _notes = "";
        
+        if ( !(_newBookModel.qty === undefined)) {
+           _qty = _newBookModel.qty;
+        };
+          
+        if (!(_newBookModel.price === undefined)) {
+           _price = _newBookModel.price;
+        };
 
-        if ( newTitle.qty === undefined) {
-            qty = 1;
-        }
-        else
-            qty = newTitle.qty;
-
-        if (newTitle.price === undefined) {
-            price = "3.99";
-        }
-        else
-            price = newTitle.price;
-
-        if (newTitle.mmyy === undefined) {
+        if (_newBookModel.mmyy === undefined) {
              var year = new Date().getFullYear();
              var month = new Date().getMonth();
-             yearMonth = year + "-" + month;
+             _yearMonth = year + "-" + month;
         }
         else
-            {
-                yearMonth = newTitle.yyyymm;
-            }
+        {
+            _yearMonth = _newBookModel.yyyymm;
+        }
+        
+        if (!($scope.selectedCondition === undefined || $scope.selectedCondition == 0)) {
+            _condition = $scope.selectedCondition;
+        }
+        
+        if (!(_newBookModel.value === undefined)) {
+            _val = _newBookModel.value;
+        }
+        
+        if (!(_newBookModel.notes === undefined )){
+            _notes = _newBookModel.notes;
+        }
+        
+        if (!(_newBookModel.box === undefined )) {
+            _box = _newBookModel.box;
+        }
+        
         $scope.newComicList.push({
             "idx": idx++,
             "Publisher": $scope.pubName,
-            "Title": $scope.title,
-            "Issue": newTitle.issue,
-            "Qty": qty,
-            "Price": price,
-            "Condition": $scope.condition,
-            "Value": newTitle.value,
-            "Box": newTitle.box,
-            "Notes": newTitle.notes,
-            "MMYY" : yearMonth
+            "Title": $scope.optTitle,
+            "Issue": _newBookModel.issue,
+            "Qty": _qty,
+            "Price": _price,
+            "Condition": _condition,
+            "Value": _val,
+            "Box": _box,
+            "Notes": _notes,
+            "MMYY" : _yearMonth
         });
         
        $scope.AddComicForm.optPublisher.$setPristine();
@@ -173,45 +155,8 @@ angular.module('cbInv.controllers', []).
          $scope.reset();
     }; // end addBtn
    
-        
-        
-    var data1 = [ 
-        {
-            label: "Monthly Comic Spendings",
-            data: [ [2011, 450], [2012, 550], [2013, 320], [2014, 700] ],
-            bars: {
-                show: true,
-                barWidth: 0.5,
-                align: "center"
-            }   
-        }
-            //,
-//            {
-//                xaxis: {
-//                ticks: [
-//                  [2011, "2011"],
-//                  [2012, "2012"],
-//                  [2013, "2013"],
-//                  [2014, "2014"]
-//                ]
-//              }   
-//            }
-    ];
-//        data2 = [ [[0, 4], [1, 2], [2, 4]] ],
-//        curr  = 1;
-    
-     $scope.data = data1;
-
-//        $scope.change = function(){ 
-//            if(curr === 1){ 
-//                $scope.data = data2;
-//                curr = 2;
-//            }else{
-//                $scope.data = data1;
-//                curr = 1;
-//            }
-//        };
-
+    /* for chart */
+    $scope.chartdata = [ $scope.monthlyChartData ];
 
         /* new comics added table */
 //       $scope.selectedBook2 = [
@@ -265,7 +210,11 @@ angular.module('cbInv.controllers', []).
 
     
     }]).
-    controller('CBInvDetailsCtrl', ['$scope','$routeParams', function($scope, $routeParams) {
+    controller('CBInvDetailsCtrl', ['$scope','$http', '$routeParams',  function($scope, $http, $routeParams ) {
+       /* why does the http.get not work? */
+       var PublisherList = $scope.publishers;
+       var TitlesList = $scope.titles;
+
       $scope.selectedTitle = "";
       $scope.selectedPublisher = "";
       $scope.selectedBook = [];

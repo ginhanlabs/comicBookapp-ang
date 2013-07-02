@@ -26,7 +26,7 @@
                                 <label class="control-label" for="txtTitle" >Title: <em>*</em></label>
                                     <div class="controls">
 <!--                                   adding this did not work     |  {filter : -->
-                                        <select ng-options="t.title for t in titles" name="txtTitle" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)" ng-required="true">
+                                        <select ng-options="t.title for t in optTitles" name="txtTitle" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)" ng-required="true">
                                         </select>
                                     </div>
                             </div>
@@ -34,32 +34,27 @@
                                 <label class="control-label" for="txtIssue" >Issue: <em>*</em></label>
                                 <div class="controls">
 <!--                                      -->
-                                    <input type="number" id="txtIssue" name="txtIssue" ng-model="newTitle.issue"  required="true" />
-
-                                    <!--<div  ng-show="AddComicForm.txtIssue.$dirty && !AddComicForm.txtIssue.$valid">-->
-                                          <!--&lt;!&ndash;Enter a range between 0 - 999&ndash;&gt;-->
-                                            <!--</div>-->
-
+                                    <input type="number" id="txtIssue" name="txtIssue" ng-model="newBookModel.issue"  required="true" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="txtQty" >Qty: </label>
                                 <div class="controls">
-                                    <input type="number" id="txtQty" name="txtQty"  ng-model="newTitle.qty" placeholder="1"/>
+                                    <input type="number" id="txtQty" name="txtQty"  ng-model="newBookModel.qty" placeholder="1"/>
                                 </div>
                                
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="txtPrice" >Price: </label>
                                 <div class="controls">
-                                    <input type="number" id="txtPrice" name="txtPrice" placeholder="3.99"  ng-model="newTitle.price" />
+                                    <input type="number" id="txtPrice" name="txtPrice" placeholder="3.99"  ng-model="newBookModel.price" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="optCondition" >Condition:</label>
                                 <div class="controls">
                                     <select id="optCondition" ng-model="selectedCondition" ng-change="setCondition(selectedCondition)">
-                                        <option value="-">--</option>
+                                        <option value="">--</option>
                                         <option value="Mint">Mint</option>
                                         <option value="Fine">Fine</option>
                                         <option value="Good">Good</option>
@@ -70,31 +65,31 @@
                             <div class="control-group">
                                 <label class="control-label" for="txtValue" >Value:</label>
                                 <div class="controls">
-                                    <input type="number" id="txtValue" placeholder="3.99" value="3.99" ng-model="newTitle.value"/>
+                                    <input type="number" id="txtValue" placeholder="3.99" value="3.99" ng-model="newBookModel.value"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="txtBoxNum" >Box:</label>
                                 <div class="controls">
-                                    <input type="text" id="txtBoxNum"  placeholder="Box #" ng-model="newTitle.box"/>
+                                    <input type="text" id="txtBoxNum"  placeholder="Box #" ng-model="newBookModel.box"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="txtNotes" >Notes</label>
                                 <div class="controls">
-                                    <input type="text" id="txtNotes" ng-model="newTitle.notes" />
+                                    <input type="text" id="txtNotes" ng-model="newBookModel.notes" />
                                 </div>
                             </div> <div class="control-group">
                                 <label class="control-label" for="txtYYYYMM" >Date:</label>
                                 <div class="controls">
-                                     <input type="month" id="txtYYYYMM" name="txtYYYYMM" ng-model="newTitle.yyyymm" />
+                                     <input type="month" id="txtYYYYMM" name="txtYYYYMM" ng-model="newBookModel.yyyymm" />
                                 </div>
                             </div>
                             <div class="add-comic-section">
                                 
-                                <button type="button"  class="btn btn-primary" ng-click="BtnNewAddComics(newTitle)"
+                                <button type="button"  class="btn btn-primary" ng-click="BtnNewAddComics(newBookModel)"
                                         ng-disabled="!(AddComicForm.optPublisher.$dirty && AddComicForm.txtTitle.$dirty && (AddComicForm.txtIssue.$dirty && AddComicForm.txtIssue.$valid))" >Add</button>
-                                <button type="button" class="btn btn-primary" ng-click="reset()" ng-disabled="isUnchanged(newTitle)">Reset</button>
+                                <button type="button" class="btn btn-primary" ng-click="reset()" >Reset</button>
 
                             </div>
                         </form> <!-- end form -->
@@ -151,7 +146,7 @@
                     </div><!-- end widgets section -->
                     
                     <div class="chart-container span8">
-                         <chart ng-model='data' class="pull-left"> </chart>
+                         <chart ng-model='chartdata' class="pull-left"> </chart>
                     </div>
                  
                   <div class="widgets-section span8 " >
