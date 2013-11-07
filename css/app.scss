@@ -1,11 +1,49 @@
  /**  
   * @outputFile ../css/app.css
-  */ 
+  */
 
 
-
+ .title-listing-section {width:250px;position:absolute;}
+ h4 { background-color:#808080; padding:6px; color:#fff;}
 .add-comic-section {
     text-align:center;
     padding:0px 0px 10px 40px;
     
 }
+
+ em {font-size: 1.3em; color:red;}
+ .main-content {padding-left:220px;}
+
+ .widgets-section {width:30%;margin-left:20px;
+   table {width:100%;margin-bottom:10px;}
+   .titles {padding-left:15px;text-align:left; font-weight:bold;}
+   .issues {text-align:center}
+   table td {text-align:right;padding-right:15px;}
+
+ }
+
+ .chart-container {text-align:center;}
+
+
+ .title-summary {margin:4px 10px 0px 0px;color:#ffffff;
+   li {padding:0px 10px;display:inline;}
+ }
+
+ chart{
+   display:none;
+   width: 700px;
+   height:300px;
+   left:100px;
+
+ }
+
+ .newComicsAddedContainer {margin-top:35px;}
+
+ .gridStyle {
+   border: 1px solid rgb(212,212,212);
+   width: 95%;
+   height: 300px;
+   margin-left:30px;
+   margin-top:35px;
+   btn {margin-bottom:5px;}
+ }
