@@ -20,7 +20,7 @@ angular.module('cbInv.controllers', []).
     $scope.isFormValid = false;
     $scope.myVal = 33;
     $scope.pubName    = "";
-    
+
     var idx = 0;
     
    $http.get('data/publisherData.json').success(function(cbData){
@@ -268,5 +268,9 @@ angular.module('cbInv.controllers', []).
                     }
                 }
             }
+
+
+
+
 
    }]);
