@@ -13,7 +13,7 @@
 //
 
 angular.module('cbInv.controllers', []).
-    controller('CBInvHomeCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+    controller('CBInvHomeCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', function($scope, $routeParams, $http, TitlesCollection) {
         var TitlesList;
         $scope.master= {};
         $scope.newComicList = [];
@@ -25,10 +25,18 @@ angular.module('cbInv.controllers', []).
 
         $http.get('data/publisherData.json').success(function(cbData){
             $scope.publishers = cbData.PublisherList;
-            $scope.titles = cbData.TitlesList; // contains all titles
+          // $scope.titles = cbData.TitlesList; // contains all titles
            $scope.monthlyChartData = cbData.MonthlySpending;
 
         });
+
+   // $scope.titles = TitlesCollection;
+         TitlesCollection.getTitles().then(function(aData){
+           $scope.titles = aData.TitlesList;
+        });
+    ;
+
+
 
 
         $scope.setPublisher = function(_pub) {

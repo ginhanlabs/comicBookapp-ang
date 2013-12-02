@@ -1,6 +1,6 @@
 // 'use strict';
 
-var cbInv = angular.module('cbInv', ['cbInv.controllers','cbInv.directives','ui.bootstrap','ngGrid', 'cbInv.filters']).
+var cbInv = angular.module('cbInv', ['cbInv.controllers', 'cbInv.factory', 'cbInv.directives','ui.bootstrap','ngGrid', 'cbInv.filters']).
          config (['$routeProvider', function($routeProvider){
             $routeProvider.
                     when('/', {templateUrl: 'partials/home.html', controller: 'CBInvHomeCtrl' }).

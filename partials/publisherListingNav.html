@@ -1,0 +1,20 @@
+<div  class="title-listing-section">
+    <div class="accordion" id="accordion1">
+        <div class="accordion-group" ng-repeat="p in publishers">
+            <div class="accordion-heading">
+                <a class="accordion-toggle btn " style="text-align:left;" ng-click="isCollapsed = !isCollapsed">
+                    {{ p.publisherName }}<i ng-class="{ 'icon-plus pull-right': !isCollapsed, 'icon-minus pull-right': isCollapsed}"></i>
+                </a>
+            </div>
+            <div class="accordion-body" ng-class="{collapse:!isCollapsed}">
+                <div class="accordion-inner" >
+                    <ul  class="unstyled" >
+                        <li ng-repeat="t in titles | filter: {publisherId : p.publisherId }">
+                            <a href="#/titleid/{{ t.id }}/publisherid/{{ p.publisherId }}">{{ t.title }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- accordion -->
+</div> <!--end title-listing-section  -->

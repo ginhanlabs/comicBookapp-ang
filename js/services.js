@@ -3,20 +3,19 @@
 /* Services */
 
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('cbInv.services', ['ngResource']).
-        factory('cbData', function($resource){
-//            return $resource('data/', {}, {
-//            )
+angular.module('cbInv.factory', [])
+    .factory('TitlesCollection', function($http){
+    return {
+
+      getTitles: function(){
+        var promise = $http.get('data/titlesData.json').then(function(response){
+          return response.data;
         });
-  //value('version', '0.1');
-//  factory('reset', ['$scope', function($scope){
-//      $scope.master= {};
-//   
-//      $scope.reset = function() {
-//          $scope.newTitle = angular.copy($scope.master);
-//        };
-//       
-//      $scope.reset();
- // }]);
+        return promise;
+      },
+      saveTitle: function(t){
+        ;
+      }
+    }
+
+});
