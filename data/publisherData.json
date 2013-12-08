@@ -3,16 +3,5 @@
         {"id":1, "publisherId": 1, "publisherName": "Marvel"},
         {"id":2, "publisherId": 2, "publisherName": "DC"},
         {"id":3, "publisherId": 3, "publisherName": "Image"}
-        ],
-
-
-    "MonthlySpending": 
-         {
-            "label": "Monthly Comic Spendings",
-            "year": "2013",
-            "data": [ 
-                        ["January", 10], ["February", 8], ["March", 4], ["April", 13], ["May", 17], ["Aug", 9]
-                    ]
-         }
-   
+    ]
 }

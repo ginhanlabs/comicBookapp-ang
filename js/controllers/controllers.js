@@ -13,7 +13,7 @@
 //
 
 angular.module('cbInv.controllers', []).
-    controller('CBInvHomeCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', function($scope, $routeParams, $http, TitlesCollection) {
+    controller('CBInvHomeCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', 'PublishersCollection',  function($scope, $routeParams, $http, TitlesCollection, PublishersCollection) {
         var TitlesList;
         $scope.master= {};
         $scope.newComicList = [];
@@ -23,21 +23,19 @@ angular.module('cbInv.controllers', []).
 
         var idx = 0;
 
-        $http.get('data/publisherData.json').success(function(cbData){
-            $scope.publishers = cbData.PublisherList;
-          // $scope.titles = cbData.TitlesList; // contains all titles
-           $scope.monthlyChartData = cbData.MonthlySpending;
+      /*
+        $scope.monthlyChartData = cbData.MonthlySpending;
+      */
 
-        });
 
    // $scope.titles = TitlesCollection;
          TitlesCollection.getTitles().then(function(aData){
            $scope.titles = aData.TitlesList;
         });
-    ;
 
-
-
+          PublishersCollection.getPublishers().then(function(data){
+            $scope.publishers = data.PublisherList;
+          });
 
         $scope.setPublisher = function(_pub) {
             $scope.pubName = _pub.publisherName;
@@ -164,7 +162,7 @@ angular.module('cbInv.controllers', []).
         }; // end addBtn
 
         /* for chart */
-        $scope.chartdata = [ $scope.monthlyChartData ];
+      /*  $scope.chartdata = [ $scope.monthlyChartData ];*/
 
         /* new comics added table */
 //       $scope.selectedBook2 = [
@@ -215,70 +213,6 @@ angular.module('cbInv.controllers', []).
             enablePaging: false,
             enableColumnResize: true
         };
-
-
-    }]).
-    controller('CBInvDetailsCtrl', ['$scope','$http', '$routeParams',  function($scope, $http, $routeParams ) {
-        /* why does the http.get not work? */
-        var PublisherList = $scope.publishers;
-        var TitlesList = $scope.titles;
-
-        $scope.selectedTitle = "";
-        $scope.selectedPublisher = "";
-        $scope.selectedBook = [];
-        $scope.detailSummary = {"totalIssues": 0, "totalPrice": 0, "totalValue": 0};
-
-        $scope.hasDetailedListing = false;
-        var bookDetail = {};
-
-        // if ($routeParams.titleId != "" or $routeParams.titleId != undefined) {
-        for (var p=0; p < PublisherList.length; p++){
-            if (PublisherList[p].publisherId == $routeParams.publisherId){
-                $scope.selectedPublisher = PublisherList[p].publisherName;
-                break;
-            }
-        }
-
-        for (var i=0; i < TitlesList.length; i++) {
-            if (TitlesList[i].titleId == $routeParams.titleId){
-                $scope.selectedTitle = TitlesList[i].title;
-                if (TitlesList[i].Issues != undefined){
-                    $scope.selectedBook = TitlesList[i].Issues;
-                    // bool to show table or not
-                    $scope.hasDetailedListing = true;
-                    break;
-                }
-                else
-                {
-                    // needed if using ng-grid
-                    // $scope.selectedBook = [ {'No issues': 'No issues' }];
-                    $scope.hasDetailedListing = false;
-                }
-            }
-        };
-
-        // $scope.detailSummary = {"totalIssues": 50, "totalPrice": 3.99, "totalValue": 33.33};
-//            $scope.detailSummary = function(){
-//           
-        if ($scope.hasDetailedListing) {
-            var totalPrice = 0;
-            var totalValue = 0;
-            if ( $scope.hasDetailedListing ) {
-                var numIssues = $scope.selectedBook.length;
-                if (numIssues > 0){
-                    $scope.detailSummary.totalIssues = numIssues;
-                    for (var n=0; n < numIssues; n++){
-                        totalPrice += Number($scope.selectedBook[n].Price);
-                        totalValue += Number($scope.selectedBook[n].Value);
-                    }
-                    $scope.detailSummary.totalPrice = totalPrice.toFixed(2);
-                    $scope.detailSummary.totalValue = totalValue.toFixed(2);
-                }
-            }
-        }
-
-
-
 
 
     }]);

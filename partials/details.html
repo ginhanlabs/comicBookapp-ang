@@ -1,10 +1,11 @@
   <div class="main-content" style="padding-left:270px;" ng-controller="CBInvDetailsCtrl">
      
-          <ul class="unstyled pull-right title-summary"  ng-model="detailSummary">
+          <!--<ul class="unstyled pull-right title-summary"  ng-model="detailSummary">
               <li><b>Issues:</b> {{ detailSummary.totalIssues}}</li>
               <li><b>Spendings:</b> {{ detailSummary.totalPrice }}</li>
               <li><b>Value:</b> {{ detailSummary.totalValue }}</li>
-          </ul>
+          </ul>-->
+      <div title-summary ng-model="{{selectedTitle}}"></div>
      
       <h4 >{{ selectedPublisher }} : {{ selectedTitle }}</h4>
 <!--      <div class="gridStyle" ng-grid="gridOptions" ng-show="hasDetailedListing"></div>-->
