@@ -1,10 +1,10 @@
 angular.module('cbInv.controllers').
-    controller('CBInvDetailsCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', 'PublishersCollection',  function($scope, $routeParams, $http, TitlesCollection, PublishersCollection) {
+    controller('bookDetailsCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', 'PublishersCollection',  function($scope, $routeParams, $http, TitlesCollection, PublishersCollection) {
 
   var selectedTitle="";
-    selectedTitle.getSelectedTitle().then(function(aData){
-    $scope.selectedTitle = aData.TitlesList;
-  });
+    TitlesCollection.getTitles().then(function(aData){
+      $scope.titles = aData.TitlesList;
+    });
 
   /* why does the http.get not work? *//*
   var PublisherList = $scope.publishers;

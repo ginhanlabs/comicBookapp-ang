@@ -1,8 +1,5 @@
-
-  <div class="main-content" >
-
+ <div class="main-content" >
                 <div class="widgets-section  pull-right" >
-<!--                    <div class="selectedItems  " style="margin:auto;border:1px solid red;"> {{newComicList}}</div>-->
                     <div>
                         <h4>Add New Comics</h4>
                     </div>
@@ -13,12 +10,8 @@
                             <div class="control-group">
                                 <label class="control-label" for="optPublisher" >Publisher: <em>*</em></label>
                                 <div class="controls">
-                                    <select  ng-options="p.publisherName for p in publishers" ng-model="selectedPub" id="optPublisher" name="optPublisher" ng-change="setPublisher(selectedPub)" required >
+                                    <select  ng-options="p.publisherName for p in publishers" ng-model="newBookModel.selectedPub" id="optPublisher" name="optPublisher" ng-change="setPublisher(selectedPub)" required >
                                     </select>
-                                    <!--<div  class="select-pub-ctrl"  ></div>-->
-<!--                                    <div ng-show="AddComicForm.optPublisher.$error.required">-->
-<!--                                        <div ng-show="!AddComicForm.optPublisher.$dirty">dd</div>-->
-<!--                                    </div>-->
                                 </div>
                             </div>
 
@@ -26,7 +19,9 @@
                                 <label class="control-label" for="txtTitle" >Title: <em>*</em></label>
                                     <div class="controls">
 <!--                                   adding this did not work     |  {filter : -->
-                                        <select ng-options="t.title for t in optTitles" name="txtTitle" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)" ng-required="true">
+                                        <select ng-options="t.title for t in optTitles" name="txtTitle"
+                                                ng-model="newBookModel.selectedTitle" ng-change="setTitle(selectedTitle)"
+                                                ng-required="true"><!-- ng-change="setTitle(selectedTitle)" -->
                                         </select>
                                     </div>
                             </div>
@@ -101,9 +96,9 @@
                     <!--     <chart ng-model='chartdata' class="pull-left"> </chart>-->
                     </div>
                  
-                  <div class="widgets-section span8 " >
+                 <!-- <div class="widgets-section span8 " >
                      <div class="gridStyle" ng-grid="newComicsGrid"> </div>
-                  </div>
+                  </div>-->
 <!--                     <table class="table "  ng-show="hasDetailedListing">
                             <thead>
                                 <tr>
