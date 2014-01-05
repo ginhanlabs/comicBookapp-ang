@@ -8,59 +8,35 @@
         <link rel="stylesheet" href="css/bootstrap-responsive.css"/>
          <link rel="stylesheet" href="css/ng-grid.css"/>
         <link rel="stylesheet" href="css/app.css"/>
-        <script src="vendors/jquery-1.9.1.js"></script>
+        <script src="vendors/jquery-1.10.2.js"></script>
         <script src="lib/angular/angular.js"></script>
         <script src="vendors/ng-grid-2.0.5.min.js"></script>
        <script src="vendors/ng-grid-layout.js"></script>
        <script src="js/app.js"></script>
-        <script src="js/controllers.js"></script>
+        <script src="js/controllers/homeCtrl.js"></script>
+        <script src="js/controllers/sideNavigationCtrl.js"></script>
+        <script src="js/controllers/bookDetailsCtrl.js"></script>
         <script src="js/filters.js"></script>
-<!--        <script src="js/services.js"></script>-->
+        <script src="js/services.js"></script>
         <script src="js/directives.js"></script>
+        <script src="js/controllers/widgetDirectives.js"></script>
+        <script src="lib/angular/angular-resource.js"></script>
         <script src="vendors/ui-bootstrap-0.3.0.js"></script>
         <script src="vendors/underscore.js"></script>
         <script src="vendors/jquery.flot.js"></script>
          <script src="vendors/jquery.flot.categories.js"></script>
+
     <!--       <script src="js/angular-resources.js"></script>
   <script src="vendors/bootstrap.js"></script>-->
     </head>
     <body>
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="#">Comic Book Inventory App v.1</a>
-                    <ul class="nav">
-                        <li><a href="#" ><i class="icon-home icon-white"></i> Home</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    <div class="container-fluid" ng-controller="CBInvHomeCtrl">
+
+    <div ng-include="'partials/nav.html'"></div>
+    <div class="container-fluid" ng-controller="homeCtrl">
             <div class="row-fluid" >
-                <div  class="title-listing-section">
-                    <div class="accordion" id="accordion1">
-                        <div class="accordion-group" ng-repeat="p in publishers">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle btn " style="text-align:left;" ng-click="isCollapsed = !isCollapsed">
-                                    {{ p.publisherName }}<i ng-class="{ 'icon-plus pull-right': !isCollapsed, 'icon-minus pull-right': isCollapsed}"></i>
-                                </a>
-                            </div>
-                            <div class="accordion-body" ng-class="{collapse:!isCollapsed}">
-                                <div class="accordion-inner" >
-                                    <ul  class="unstyled" >
-                                        <li ng-repeat="t in titles | filter: {publisherId : p.publisherId }">
-                                             <a href="#/titleid/{{ t.id }}/publisherid/{{ p.publisherId }}">{{ t.title }}</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- accordion -->
-                </div> <!--end title-listing-section  -->
-               
-                        <div ng-view></div>
-                
-          </div><!-- row -->
+                <div ng-include="'partials/publisherListingNav.html'" ></div>
+                 <div ng-view></div>
+            </div><!-- row -->
         </div><!-- Container -->
     </body>
 </html>

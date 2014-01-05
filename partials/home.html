@@ -1,25 +1,17 @@
-<!-- branch 2 testing -->
-
-  <div class="main-content" >
-               
+ <div class="main-content" >
                 <div class="widgets-section  pull-right" >
-<!--                    <div class="selectedItems  " style="margin:auto;border:1px solid red;"> {{newComicList}}</div>-->
                     <div>
                         <h4>Add New Comics</h4>
                     </div>
                    <br/>
-                   
+
                         <form name="AddComicForm"   novalidate class="form-horizontal" ><!-- ng-init="isFormValid = true" moved to $scope -->
                            
                             <div class="control-group">
                                 <label class="control-label" for="optPublisher" >Publisher: <em>*</em></label>
                                 <div class="controls">
-                                    <select  ng-options="p.publisherName for p in publishers" ng-model="selectedPub" id="optPublisher" name="optPublisher" ng-change="setPublisher(selectedPub)" required >
+                                    <select  ng-options="p.publisherName for p in publishers" ng-model="newBookModel.selectedPub" id="optPublisher" name="optPublisher" ng-change="setPublisher(selectedPub)" required >
                                     </select>
-                                    <!--<div  class="select-pub-ctrl"  ></div>-->
-<!--                                    <div ng-show="AddComicForm.optPublisher.$error.required">-->
-<!--                                        <div ng-show="!AddComicForm.optPublisher.$dirty">dd</div>-->
-<!--                                    </div>-->
                                 </div>
                             </div>
 
@@ -27,7 +19,9 @@
                                 <label class="control-label" for="txtTitle" >Title: <em>*</em></label>
                                     <div class="controls">
 <!--                                   adding this did not work     |  {filter : -->
-                                        <select ng-options="t.title for t in optTitles" name="txtTitle" ng-model="selectedTitle" ng-change="setTitle(selectedTitle)" ng-required="true">
+                                        <select ng-options="t.title for t in optTitles" name="txtTitle"
+                                                ng-model="newBookModel.selectedTitle" ng-change="setTitle(selectedTitle)"
+                                                ng-required="true"><!-- ng-change="setTitle(selectedTitle)" -->
                                         </select>
                                     </div>
                             </div>
@@ -76,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="txtNotes" >Notes</label>
+                                <label class="control-label" for="txtNotes" placeholder="notes">Notes</label>
                                 <div class="controls">
                                     <input type="text" id="txtNotes" ng-model="newBookModel.notes" />
                                 </div>
@@ -96,64 +90,16 @@
                         </form> <!-- end form -->
                     </div><!-- floatright -->
 
-                    <div class="widgets-section span8"  >
-                        <div class="widgets-section  pull-left">
-                            <h4>Collection</h4>
-                            <table>
-                                <tr>
-                                    <td class="titles">Marvel</td><td>$200</td>
-                                </tr>
-                                <tr>
-                                    <td class="titles">DC</td><td>$100</td>
-                                </tr>
-                                <tr>
-                                    <td class="titles">Image</td><td>$50</td>
-                                </tr>
-                                <tr>
-                                    <td></td><td>$350</td>
-                                </tr>
-                            </table>
-                        </div>
-                     <div class="widgets-section pull-left">
-                            <h4>Most Collected</h4>
-                            <table>
-                                <tr>
-                                    <td class="titles">Amazing Spider-man</td><td>100</td>
-                                </tr>
-                                <tr>
-                                    <td class="titles">Batman</td><td>25</td>
-                                </tr>
-                                <tr>
-                                    <td class="titles">Teen Titans</td><td>15</td>
-                                </tr>
-
-                            </table>
-                        </div> 
-                    <div class="widgets-section pull-left">
-                            <h4>Most Valuable</h4>
-                            <table>
-                                <tr>
-                                    <td>#252</td><td class="titles">Amazing Spider-man</td><td>$22</td>
-                                </tr>
-                                <tr>
-                                    <td>#1</td><td class="titles">Batman</td><td>$5</td>
-                                </tr>
-                                <tr>
-                                    <td>#1</td><td class="titles">A-team</td><td>$4</td>
-                                </tr>
-
-                            </table>
-                        </div>
-                    </div><!-- end widgets section -->
+                   <div ng-include="'partials/widgets.html'"  class="widgets-section span8"></div>
                     
                     <div class="chart-container span8">
-                         <chart ng-model='chartdata' class="pull-left"> </chart>
+                    <!--     <chart ng-model='chartdata' class="pull-left"> </chart>-->
                     </div>
                  
-                  <div class="widgets-section span8 " >
+                 <!-- <div class="widgets-section span8 " >
                      <div class="gridStyle" ng-grid="newComicsGrid"> </div>
-                  </div>
-<!--                     <table class="table "  ng-show="hasDetailedListing">
+                  </div>-->
+                   <table class="table "  ng-show="hasDetailedListing">
                             <thead>
                                 <tr>
                                     <th>Title</th>
@@ -170,7 +116,7 @@
                                     </td>
                                 </tr>
                           </tbody>
-                        </table>-->
+                        </table>
                     <div style="clear:both" >  </div>
 
        </div><!-- end main-content -->        
