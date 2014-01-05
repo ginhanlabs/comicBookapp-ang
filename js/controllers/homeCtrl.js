@@ -114,6 +114,17 @@ angular.module('cbInv.controllers', []).
       _box = _newBookModel.box;
     }
 
+    $scope.totalValue = function(publisher){
+      // todo make this into some service
+      var allIssues = $scope.newComicList.length;
+      if (allIssues > 0){
+        angular.forEach($scope.newComicList, function(value, key){
+          ;
+        })
+      }
+
+    }
+
     $scope.newComicList.push({
       "idx": idx++,
       "Publisher": $scope.pubName,
