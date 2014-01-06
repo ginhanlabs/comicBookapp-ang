@@ -1,5 +1,9 @@
-angular.module('cbInv.controllers', []).
-  controller('homeCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', 'PublishersCollection',  function($scope, $routeParams, $http, TitlesCollection, PublishersCollection) {
+angular.module('cbInv.controllers', [])
+  .controller('addComicsController', function($scope){
+
+  });
+
+  /*controller('homeCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', 'PublishersCollection',  function($scope, $routeParams, $http, TitlesCollection, PublishersCollection) {
     var TitlesList;
     $scope.master= {};
     $scope.newComicList = [];
@@ -9,9 +13,9 @@ angular.module('cbInv.controllers', []).
 
     var idx = 0;
 
-    /*
+    *//*
      $scope.monthlyChartData = cbData.MonthlySpending;
-     */
+     *//*
 
 
     // $scope.titles = TitlesCollection;
@@ -49,7 +53,7 @@ angular.module('cbInv.controllers', []).
 
 
     $scope.reset = function() {
-      /* clears from scope and then clear it from model */
+      *//* clears from scope and then clear it from model *//*
       $scope.newBookModel = angular.copy($scope.master);
       $scope.condition = {};
       $scope.selectedCondition = 0;
@@ -146,10 +150,10 @@ angular.module('cbInv.controllers', []).
     $scope.reset();
   }; // end addBtn
 
-  /* for chart */
-  /*  $scope.chartdata = [ $scope.monthlyChartData ];*/
+  *//* for chart *//*
+  *//*  $scope.chartdata = [ $scope.monthlyChartData ];*//*
 
-  /* new comics added table */
+  *//* new comics added table *//*
   //       $scope.selectedBook2 = [
   //            {'Issue': '200', 'Price': '2.99', 'Qty': '1', 'Condition': 'Good', 'Value':'3.00', 'MMYY':'01/2001','Notes':'' },
   //            {'Issue': '201', 'Price': '2.99', 'Qty': '1', 'Condition': 'Good', 'Value':'3.00', 'MMYY':'01/2001','Notes':''},
@@ -163,4 +167,4 @@ angular.module('cbInv.controllers', []).
       }
     });
   };
-}]);
+}]);*/

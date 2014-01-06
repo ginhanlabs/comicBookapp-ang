@@ -1,10 +1,6 @@
 'use strict';
-
-/* Services */
-
-
 angular.module('cbInv.factory', [])
-    .factory('TitlesCollection', function($http){
+    .factory('TitlesListing', function($http){
     return {
 
       getTitles: function(){
@@ -25,7 +21,7 @@ angular.module('cbInv.factory', [])
       }
     }
   })
-  .factory('PublishersCollection', function($http){
+  .factory('PublishersListing', function($http){
     return {
       getPublishers: function(){
         var promise = $http.get('data/publisherData.json').then(function(response){
