@@ -4,9 +4,9 @@ angular.module('cbInv.sideNavController', [])
     $scope.publishers = aData.Publishers;
   });*/
     $scope.PublishersList = [
-      {"id":1, "publisherId": 1, "publisherName": "Marvel"},
-      {"id":2, "publisherId": 2, "publisherName": "DC"},
-      {"id":3, "publisherId": 3, "publisherName": "Image"}
+      {"id":1, "publisherId": 1, "publisherName": "Marvel", "value":"343"},
+      {"id":2, "publisherId": 2, "publisherName": "DC", "value":239},
+      {"id":3, "publisherId": 3, "publisherName": "Image", "value":"123"}
     ]
     $scope.TitlesList = [
       {"id": 1, "titleId": 1, "publisherId": 1, "title": "Amazing Spider-man and friends",
