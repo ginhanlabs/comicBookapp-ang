@@ -64,3 +64,6 @@ chart {
   margin-top: 35px; }
   .gridStyle btn {
     margin-bottom: 5px; }
+
+.form-horizontal .form-group {
+  margin-left: -50px; }
