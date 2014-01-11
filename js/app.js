@@ -5,9 +5,11 @@ var cbInv = angular.module('cbInv', [
     'cbInv.homeController',
     'cbInv.mainController',
     'cbInv.sideNavController',
+    'cbInv.menuController',
     'cbInv.factory',
     'cbInv.directives',
-    'cbInv.filters'
+    'cbInv.filters',
+    'ui.bootstrap'
     ]).
          config (['$routeProvider', function($routeProvider){
             $routeProvider.

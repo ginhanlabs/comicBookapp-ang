@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <label class="col-sm-5 control-label" for="optPublisher">Publisher: <em>*</em></label>
-        <div class="col-sm-7">{{ pList}}
+        <div class="col-sm-7">
             <select  class="form-control" id="optPublisher" name="optPublisher" required
                      ng-model="newBookModel.selectedPub">
                     <option ng-repeat=" p in PublishersList" value="{{p.publisherId}}" >{{p.publisherName}}</option>
@@ -25,25 +25,29 @@
     <div class="form-group">
         <label class="col-sm-5 control-label" for="txtIssue">Issue: <em>*</em></label>
         <div class="col-sm-7">
-            <input  class="form-control" type="number" id="txtIssue" name="txtIssue" ng-model="newBookModel.issue" required="true"/>
+            <input  class="form-control" type="number" id="txtIssue" name="txtIssue" ng-model="newBookModel.issue"
+                    required="true" data-ng-disabled="!newBookModel.selectedTitle"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label" for="txtQty">Qty: </label>
         <div class="col-sm-7">
-            <input  class="form-control" type="number" id="txtQty" name="txtQty" ng-model="newBookModel.qty" placeholder="1"/>
+            <input  class="form-control" type="number" id="txtQty" name="txtQty" ng-model="newBookModel.qty"
+                    placeholder="1" data-ng-disabled="!newBookModel.selectedTitle"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label" for="txtPrice">Price: </label>
         <div class="col-sm-7">
-            <input  class="form-control" type="number" id="txtPrice" name="txtPrice" placeholder="3.99" ng-model="newBookModel.price"/>
+            <input  class="form-control" type="number" id="txtPrice" name="txtPrice" placeholder="3.99"
+                    ng-model="newBookModel.price" data-ng-disabled="!newBookModel.selectedTitle"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label" for="optCondition">Condition:</label>
-        <div class="col-sm-7">
-            <select class="form-control" id="optCondition" ng-model="selectedCondition" ng-change="setCondition(selectedCondition)">
+        <div class="col-sm-7"><!--ng-change="setCondition(selectedCondition)"-->
+            <select class="form-control" id="optCondition" ng-model="newBookModel.selectedCondition"
+                     data-ng-disabled="!newBookModel.selectedTitle">
                     <option value="">--</option>
                     <option value="Mint">Mint</option>
                     <option value="Fine">Fine</option>
@@ -55,30 +59,31 @@
     <div class="form-group">
         <label class="col-sm-5 control-label" for="txtValue">Value:</label>
         <div class="col-sm-7">
-            <input class="form-control" type="number" id="txtValue" placeholder="3.99" value="3.99" ng-model="newBookModel.value"/>
+            <input class="form-control" type="number" id="txtValue" placeholder="3.99" value="3.99"
+                   ng-model="newBookModel.value" data-ng-disabled="!newBookModel.selectedTitle"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label" for="txtBoxNum">Box:</label>
         <div class="col-sm-7">
-            <input class="form-control" type="text" id="txtBoxNum" placeholder="Box #" ng-model="newBookModel.box"/>
+            <input class="form-control" type="text" id="txtBoxNum" placeholder="Box #" ng-model="newBookModel.box" data-ng-disabled="!newBookModel.selectedTitle"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label" for="txtNotes" placeholder="notes">Notes</label>
         <div class="col-sm-7">
-            <input class="form-control" type="text" id="txtNotes" ng-model="newBookModel.notes"/>
+            <input class="form-control" type="text" id="txtNotes" ng-model="newBookModel.notes" data-ng-disabled="!newBookModel.selectedTitle"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label" for="txtYYYYMM">Date:</label>
         <div class="col-sm-7">
-            <input class="form-control" type="month" id="txtYYYYMM" name="txtYYYYMM" ng-model="newBookModel.yyyymm"/>
+            <input class="form-control" type="month" id="txtYYYYMM" name="txtYYYYMM" ng-model="newBookModel.yyyymm" data-ng-disabled="!newBookModel.selectedTitle"/>
         </div>
     </div>
-    <div class="add-comic-section">
+    <div class="add-comic-section"><!--ng-click="BtnNewAddComics(newBookModel)"-->
 
-        <button type="button" class="btn btn-primary" ng-click="BtnNewAddComics(newBookModel)"
+        <button type="button" class="btn btn-primary"
                 ng-disabled="!(AddComicForm.optPublisher.$dirty && AddComicForm.txtTitle.$dirty && (AddComicForm.txtIssue.$dirty && AddComicForm.txtIssue.$valid))">
             Add
         </button>
