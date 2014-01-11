@@ -3,6 +3,7 @@
 var cbInv = angular.module('cbInv', [
     'cbInv.controllers',
     'cbInv.homeController',
+    'cbInv.mainController',
     'cbInv.sideNavController',
     'cbInv.factory',
     'cbInv.directives',

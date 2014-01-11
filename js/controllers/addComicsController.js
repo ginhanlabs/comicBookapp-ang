@@ -1,7 +1,16 @@
 angular.module('cbInv.controllers', [])
-  .controller('addComicsController', function($scope){
+  .controller('addComicsController', ['$scope','$http', 'PublishersListing', 'TitlesListing', '$rootScope', function($scope, $http,PublishersListing, TitlesListing, $rootScope) {
 
-  });
+
+    PublishersListing.getPublishers().success(function(aData){
+      $scope.PublishersList = aData.PublisherList;
+    })
+
+    TitlesListing.getTitles().success(function(aData){
+        $scope.TitlesList= aData.TitlesList;
+      })
+
+  }]);
 
   /*controller('homeCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', 'PublishersCollection',  function($scope, $routeParams, $http, TitlesCollection, PublishersCollection) {
     var TitlesList;
@@ -118,8 +127,7 @@ angular.module('cbInv.controllers', [])
       _box = _newBookModel.box;
     }
 
-    $scope.totalValue = function(publisher){
-      // todo make this into some service
+    $scope.totalValue = function(publisher){ to do make service
       var allIssues = $scope.newComicList.length;
       if (allIssues > 0){
         angular.forEach($scope.newComicList, function(value, key){

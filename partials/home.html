@@ -10,7 +10,7 @@
             </tr>
             <tr>
                 <td>Total:</td>
-                <td>{{ totalValueByPublisher }}</td>
+                <td></td>
             </tr>
         </table>
 
@@ -18,13 +18,13 @@
     <div class="col-md-6">
         <h4>Most Collected</h4>
         <table class="table">
-            <tr ng-repeat="t in TotalIssuesPerTitle">
-                <td class="titles">{{ t.id }}</td>
+            <tr ng-repeat="t in TitlesList | filter | limitTo:limitNumber | orderBy:predicate:reverse">
+                <td class="titles">{{ t.title }}</td>
                 <td >{{ t.totalIssues }}</td>
             </tr>
             <tr>
-                <td>Total:</td>
-                <td>{{ totalIssues }}</td>
+                <td>2</td>
+                <td></td>
             </tr>
 
         </table>
