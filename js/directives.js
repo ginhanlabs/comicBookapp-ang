@@ -33,13 +33,27 @@ angular.module('cbInv.directives', []).
               });
           }
       };
-    })
-  .directive('titleSummary', function(){
+    })/*
+  .directive('collectionsSummary', function(){
       return {
-       /* restrict: 'E',
-        transclude: 'true'*/
+        restrict: 'A',
+        templateUrl : "templates/collectionSummary.tpl.htm",
+        controller : "summaryController",
+        link : function(scope, elem, attrs) {
+        }
 
       }
-  })
-  ;
-      
+})*/
+  .directive('addPub', ['PublisherValueTotal',function(PublisherValueTotal){
+        var total = 0;
+        return {
+            restrict: "A",
+           link    : function(scope, elem, attrs){
+                PublisherValueTotal.setPublisherValueTotal(attrs.p);
+                console.log(PublisherValueTotal.getPublisherValueTotal());
+             //  scope.publisherValTotal = PublisherValueTotal.getPublisherValueTotal();
+               scope.publisherValTotal();
+
+            }
+        }
+    }])

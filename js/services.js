@@ -14,6 +14,19 @@ angular.module('cbInv.factory', [])
       }
     }
   })
+  .factory('PublisherValueTotal', function(){
+       var t = {};
+        t.total = 0;
+       return {
+           setPublisherValueTotal : function(value) {
+             return t.total+= parseInt(value);
+           },
+           getPublisherValueTotal : function(){
+             return t.total;
+           }
+
+       }
+    })
   /*.factory('SelectedPublisher', function(v){
     var sp = {};
     sp.pub = 0;

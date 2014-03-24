@@ -1,0 +1,21 @@
+<table class="table">
+    <tr ng-repeat="p in PublishersList" ng-model="PublishersList">
+        <td class="titles">{{ p.publisherName }}</td>
+        <td add-pub p="{{p.value}}">{{ p.value}}</td>
+    </tr>
+    <tr>
+        <td>Total:</td>
+        <td>{{publisherValTotal}}</td>
+    </tr>
+</table>
+<!--
+<table class="table">
+    <tr>
+        <td class="titles"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Total: </td>
+        <td>000</td>
+    </tr>
+</table>-->
