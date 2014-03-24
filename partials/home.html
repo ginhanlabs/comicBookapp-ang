@@ -6,7 +6,7 @@
         <table class="table">
             <tr ng-repeat="p in PublishersList">
                 <td class="titles">{{ p.publisherName }}</td>
-                <td add-pub p="{{p.value}}">{{ p.value}}</td>
+                <td add-pub p="{{p.value}}" ng-model="p">{{ p.value}}</td>
             </tr>
             <tr>
                 <td>Total:</td>
@@ -31,24 +31,5 @@
     </div>
 
    </div>
-  <!--  &lt;!&ndash; end widgets section &ndash;&gt;
-    <table class="table"  ng-show="hasDetailedListing">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th style="width:10px;">Issue</th>
-            <th style="width:40px"></th>
-        </tr>
-        </thead>
-        <tbody ng-repeat = "item in newComicList" ng-model="newComicList">
-        <tr>
-            <td class="titles">{{ item.title }}</td>
-            <td class="issues">{{ item.issue }}</td>
-            <td>
-                <button class="btn" ng-click="RemoveComicItem($index);"><i class="icon-remove"></i></button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <div style="clear:both" >  </div>-->
+
 </div>

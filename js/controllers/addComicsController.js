@@ -1,16 +1,27 @@
 angular.module('cbInv.controllers', [])
   .controller('addComicsController', ['$scope','$http', 'PublishersListing', 'TitlesListing', '$rootScope', function($scope, $http,PublishersListing, TitlesListing, $rootScope) {
-
+  $scope.swapview =  "default";
 
     PublishersListing.getPublishers().success(function(aData){
       $scope.PublishersList = aData.PublisherList;
-    })
+    });
 
     TitlesListing.getTitles().success(function(aData){
         $scope.TitlesList= aData.TitlesList;
       })
 
+    $scope.toggleView = function(){
+      if ($scope.swapview == "default"){
+        $scope.swapview = "tableView";
+      }
+      else {
+        $scope.swapview = "default";
+      }
+    };
+
   }]);
+
+
 
   /*controller('homeCtrl', ['$scope', '$routeParams', '$http','TitlesCollection', 'PublishersCollection',  function($scope, $routeParams, $http, TitlesCollection, PublishersCollection) {
     var TitlesList;

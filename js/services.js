@@ -14,6 +14,7 @@ angular.module('cbInv.factory', [])
       }
     }
   })
+
   .factory('PublisherValueTotal', function(){
        var t = {};
         t.total = 0;
@@ -27,6 +28,9 @@ angular.module('cbInv.factory', [])
 
        }
     })
+
+
+
   /*.factory('SelectedPublisher', function(v){
     var sp = {};
     sp.pub = 0;

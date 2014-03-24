@@ -48,11 +48,15 @@ angular.module('cbInv.directives', []).
         var total = 0;
         return {
             restrict: "A",
-           link    : function(scope, elem, attrs){
+            ngModel : "?ngModel",
+           link    : function(scope, elem, attrs, ngModel){
                 PublisherValueTotal.setPublisherValueTotal(attrs.p);
                 console.log(PublisherValueTotal.getPublisherValueTotal());
              //  scope.publisherValTotal = PublisherValueTotal.getPublisherValueTotal();
-               scope.publisherValTotal();
+              ngModel.$setViewValue = function() {
+                scope.publisherValTotal();
+              }
+
 
             }
         }
