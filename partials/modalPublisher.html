@@ -1,0 +1,19 @@
+
+    <div class="modal-header">
+        <h3>Admin - Publisher CRUD</h3>
+    </div>
+    <div class="modal-body"><!--ng-model="newBookModel.selectedPub"-->
+        <select class="form-control" id="optModalPublisher" name="optModalPublisher"
+                ng-model="optModalPublisher.publisherName"  >
+            <option ng-repeat=" p in PublishersList" value="{{p.publisherName}}" >{{p.publisherName}}</option>
+        </select>
+        <br/>
+        <input type="text" id="txtModalPublisher" value="{{optModalPublisher.publisherName}}"/>
+        <button class="btn btn-primary">Add</button>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-primary">Delete</button>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>

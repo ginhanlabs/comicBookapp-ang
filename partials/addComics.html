@@ -1,0 +1,112 @@
+<div data-ng-controller="addComicsController">
+    <div >
+
+        <h4 ><span>Add New Comics</span>
+        <button
+            type="button"
+            class="icon-align-right"
+            ng-click="toggleView();" ng-model="swapview"><span
+            class="glyphicon glyphicon-zoom-in"></span></button>
+        </h4>
+    </div>
+    <div class="animate-switch-container" ng-switch on="swapview">
+        <div class="animate-switch" ng-switch-when="default">
+            <form name="AddComicForm" novalidate class="form-horizontal"><!-- ng-init="isFormValid = true" moved to $scope -->
+
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="optPublisher">Publisher: <em>*</em></label>
+                <div class="col-sm-7">
+                    <select  class="form-control" id="optPublisher" name="optPublisher" required
+                             ng-model="newBookModel.selectedPub">
+                            <option ng-repeat=" p in PublishersList" value="{{p.publisherId}}" >{{p.publisherName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtTitle" class="col-sm-5 control-label">Title: <em>*</em></label>
+                <div class="col-sm-7">
+                    <select class="form-control"  name="txtTitle" id="txtTitle"
+                            ng-model="newBookModel.selectedTitle" ng-change="setTitle(selectedTitle)"
+                            ng-required="true" data-ng-disabled="!newBookModel.selectedPub">
+                        <option ng-repeat="t in TitlesList | filter: {publisherId:newBookModel.selectedPub}" value="t.id">{{
+                            t.title }}</option>
+                    </select >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="txtIssue">Issue: <em>*</em></label>
+                <div class="col-sm-7">
+                    <input  class="form-control" type="number" id="txtIssue" name="txtIssue" ng-model="newBookModel.issue"
+                            required="true" data-ng-disabled="!newBookModel.selectedTitle"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="txtQty">Qty: </label>
+                <div class="col-sm-7">
+                    <input  class="form-control" type="number" id="txtQty" name="txtQty" ng-model="newBookModel.qty"
+                            placeholder="1" data-ng-disabled="!newBookModel.selectedTitle"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="txtPrice">Price: </label>
+                <div class="col-sm-7">
+                    <input  class="form-control" type="number" id="txtPrice" name="txtPrice" placeholder="3.99"
+                            ng-model="newBookModel.price" data-ng-disabled="!newBookModel.selectedTitle"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="optCondition">Condition:</label>
+                <div class="col-sm-7"><!--ng-change="setCondition(selectedCondition)"-->
+                    <select class="form-control" id="optCondition" ng-model="newBookModel.selectedCondition"
+                             data-ng-disabled="!newBookModel.selectedTitle">
+                            <option value="">--</option>
+                            <option value="Mint">Mint</option>
+                            <option value="Fine">Fine</option>
+                            <option value="Good">Good</option>
+                            <option value="Poor">Poor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="txtValue">Value:</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="number" id="txtValue" placeholder="3.99" value="3.99"
+                           ng-model="newBookModel.value" data-ng-disabled="!newBookModel.selectedTitle"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="txtBoxNum">Box:</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="text" id="txtBoxNum" placeholder="Box #" ng-model="newBookModel.box" data-ng-disabled="!newBookModel.selectedTitle"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="txtNotes" placeholder="notes">Notes</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="text" id="txtNotes" ng-model="newBookModel.notes" data-ng-disabled="!newBookModel.selectedTitle"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="txtYYYYMM">Date:</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="month" id="txtYYYYMM" name="txtYYYYMM" ng-model="newBookModel.yyyymm" data-ng-disabled="!newBookModel.selectedTitle"/>
+                </div>
+            </div>
+            <div class="add-comic-section"><!--ng-click="BtnNewAddComics(newBookModel)"-->
+
+                <button type="button" class="btn btn-primary"
+                        ng-disabled="!(AddComicForm.optPublisher.$dirty && AddComicForm.txtTitle.$dirty && (AddComicForm.txtIssue.$dirty && AddComicForm.txtIssue.$valid))">
+                    Add
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="reset()">Reset</button>
+
+            </div>
+            </form>
+        <!-- end form -->
+        </div><!-- end switch -->
+        <div class="animate-switch" ng-switch-when="tableView">
+            blahsfsfsf sfsfd
+        </div>
+    </div><!-- container -->
+</div><!-- end main-content -->
+          

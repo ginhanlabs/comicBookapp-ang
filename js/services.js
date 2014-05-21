@@ -1,37 +1,45 @@
 'use strict';
-
-/* Services */
-
-
 angular.module('cbInv.factory', [])
-    .factory('TitlesCollection', function($http){
+    .factory('TitlesListing', function($http){
     return {
-
       getTitles: function(){
-        var promise = $http.get('data/titlesData.json').then(function(response){
-          return response.data;
-        });
-        return promise;
-      },
-      getSelectedTitle: function($http, title) {
-        // to do - pass in param
-        var promise = $http.get('data/titlesData.json').then(function(response){
-          return response.data;
-        });
-        return promise;
-      },
-      saveTitle: function(t){
-        ;
+        return $http.get('data/publisherData.json')
       }
     }
   })
-  .factory('PublishersCollection', function($http){
+  .factory('PublishersListing', function($http){
     return {
       getPublishers: function(){
-        var promise = $http.get('data/publisherData.json').then(function(response){
-          return response.data;
-        });
-        return promise;
+        return $http.get('data/publisherData.json')
       }
     }
   })
+
+  .factory('calcPubTotalVal', function(){
+       var t = {};
+       t.total = 0;
+       return {
+           setPublisherValueTotal : function(value) {
+             t.total += parseInt(value);
+             return;
+           },
+           getPublisherValueTotal : function(){
+             return t.total;
+           }
+
+       }
+    })
+
+
+
+  /*.factory('SelectedPublisher', function(v){
+    var sp = {};
+    sp.pub = 0;
+    sp.getPublisher = function(){
+      return sp.pub;
+    }
+    sp.setPublisher = function(v){
+      this.pub = v;
+    }
+    return sp;
+  })*/

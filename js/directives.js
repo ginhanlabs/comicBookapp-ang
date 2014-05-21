@@ -33,13 +33,40 @@ angular.module('cbInv.directives', []).
               });
           }
       };
-    })
-  .directive('titleSummary', function(){
+    })/*
+  .directive('collectionsSummary', function(){
       return {
-       /* restrict: 'E',
-        transclude: 'true'*/
+        restrict: 'A',
+        templateUrl : "templates/collectionSummary.tpl.htm",
+        controller : "summaryController",
+        link : function(scope, elem, attrs) {
+        }
 
       }
-  })
-  ;
-      
+})*/
+  .directive('addPub', ['calcPubTotalVal',function(calcPubTotalVal){
+        var total = 0;
+        return {
+            restrict: "A",
+
+           link    : function(scope, elem, attrs){
+             calcPubTotalVal.setPublisherValueTotal(attrs.p);
+                console.log(calcPubTotalVal.getPublisherValueTotal());
+             scope.publisherValTotal += total;
+             //  scope.publisherValTotal = PublisherValueTotal.getPublisherValueTotal();
+             /* ngModel.$setViewValue = function() {
+                scope.publisherValTotal();*/
+             // }
+
+
+            }
+        }
+    }])
+  .directive('pubTotal', ['calcPubTotalVal', function(calcPubTotalVal){
+    return {
+      restrict : "A",
+      link : function(scope, elem, attrs){
+          elem.html(calcPubTotalVal.getPublisherValueTotal());
+      }
+    }
+  }]);
