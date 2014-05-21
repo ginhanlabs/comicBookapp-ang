@@ -1,25 +1,20 @@
 comicBookapp-ang
 ================
-updated - 11/02/2013
-working on this again after gaining more knowledge on angular
-and git
+updated - 1/11/2014
+1) using service calls for the publisherlist, titleslist
+2) added filtering .. yay.. before I did it the hard way.
 
-personal learning project using angular, bootstrap, flot and more experimentations tbd
-The goal is to write an app to track comic book collection.
-currently it can be run to see what's been done and where it might be heading.
+todo for
+1) add, delete books onto table
+2) update totals for collection/most collected when added/deleted books
+3) details page
+4) admin for adding new publishers/titles
+5) tbd
 
-setup instructions:
-the vendors folder has been excluded as they are mostly plugins and shouldn't be included here
-so you'll need to get these and place them in the vendors folder
+personal learning project using angular, bootstrap 3, flot and more experimentations tbd
+The goal is to write an app to track comic book collection, hooking up to mongo.
 
-as of 11/2013
-bootstrap.js
-jquery.flot.categories.js
-jquery.flot.js
-jquery-1.10.2.js
-ng-grid-2.0.5.min.js
-ng-grid-layout.js
-ui-bootstrap-0.3.0.js
-underscore.js
+so in the past few months,
+I'd like to try writing more directives, communication from controllers, etc.
 
 thanks.
