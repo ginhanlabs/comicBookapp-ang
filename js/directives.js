@@ -44,20 +44,29 @@ angular.module('cbInv.directives', []).
 
       }
 })*/
-  .directive('addPub', ['PublisherValueTotal',function(PublisherValueTotal){
+  .directive('addPub', ['calcPubTotalVal',function(calcPubTotalVal){
         var total = 0;
         return {
             restrict: "A",
-            ngModel : "?ngModel",
-           link    : function(scope, elem, attrs, ngModel){
-                PublisherValueTotal.setPublisherValueTotal(attrs.p);
-                console.log(PublisherValueTotal.getPublisherValueTotal());
+
+           link    : function(scope, elem, attrs){
+             calcPubTotalVal.setPublisherValueTotal(attrs.p);
+                console.log(calcPubTotalVal.getPublisherValueTotal());
+             scope.publisherValTotal += total;
              //  scope.publisherValTotal = PublisherValueTotal.getPublisherValueTotal();
-              ngModel.$setViewValue = function() {
-                scope.publisherValTotal();
-              }
+             /* ngModel.$setViewValue = function() {
+                scope.publisherValTotal();*/
+             // }
 
 
             }
         }
     }])
+  .directive('pubTotal', ['calcPubTotalVal', function(calcPubTotalVal){
+    return {
+      restrict : "A",
+      link : function(scope, elem, attrs){
+          elem.html(calcPubTotalVal.getPublisherValueTotal());
+      }
+    }
+  }]);

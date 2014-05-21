@@ -1,11 +1,11 @@
 angular.module('cbInv.homeController', [])
-  .controller('summaryController', ['$scope','$http', 'PublishersListing','TitlesListing','PublisherValueTotal',
-        function($scope, $http, PublishersListing, TitlesListing,PublisherValueTotal) {
+  .controller('summaryController', ['$scope','$http','PublishersListing','TitlesListing',
+        function($scope, $http, PublishersListing, TitlesListing) {
     $scope.predicate = "-totalIssues";
     $scope.limitNumber = 3;
 
   $scope.publisherValTotal = function(){
-      PublisherValueTotal.getPublisherValueTotal();
+     // PublisherValueTotal.getPublisherValueTotal();
 
   };
 

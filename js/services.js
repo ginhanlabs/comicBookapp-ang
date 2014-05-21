@@ -15,12 +15,13 @@ angular.module('cbInv.factory', [])
     }
   })
 
-  .factory('PublisherValueTotal', function(){
+  .factory('calcPubTotalVal', function(){
        var t = {};
-        t.total = 0;
+       t.total = 0;
        return {
            setPublisherValueTotal : function(value) {
-             return t.total+= parseInt(value);
+             t.total += parseInt(value);
+             return;
            },
            getPublisherValueTotal : function(){
              return t.total;
